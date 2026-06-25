@@ -1,0 +1,11 @@
+type
+battleTime
+isLadderTournament
+eventTag
+arena
+gameMode
+deckSelection
+team
+opponent
+isHostedMatch
+leagueNumber

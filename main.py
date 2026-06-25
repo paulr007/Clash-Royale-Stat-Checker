@@ -1,5 +1,6 @@
 import requests
 import json
+import sqlite3
 from config import API_KEY, PLAYER_TAG
 
 API_KEY = API_KEY
@@ -12,9 +13,36 @@ tag = PLAYER_TAG.replace("#", "%23")
 battle_response = requests.get(
     f"https://api.clashroyale.com/v1/players/{tag}/battlelog", headers=headers
 )
+battles = battle_response.json()
+
+conn = sqlite3.connect("battles.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS battles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        timestamp TEXT UNIQUE,
+        result TEXT,
+        my_crowns INTEGER,
+        opp_crowns INTEGER
+    )
+""")
+
+for battle in battles:
+    timestamp = battle["battleTime"]
+    my_crowns = battle["team"][0]["crowns"]
+    opp_crowns = battle["opponent"][0]["crowns"]
+    result = "Win" if my_crowns > opp_crowns else "Loss"
+
+    cursor.execute(
+        """
+        INSERT OR IGNORE INTO battles (timestamp, result, my_crowns, opp_crowns)
+        VALUES (?, ?, ?, ?)
+    """,
+        (timestamp, result, my_crowns, opp_crowns),
+    )
 
 with open("cardWinRelation.json", "w") as f:
-    battles = battle_response.json()
     my_card_wins = {}
     my_card_games = {}
     opp_card_losses = {}
@@ -65,3 +93,11 @@ with open("cardWinRelation.json", "w") as f:
         f,
         indent=4,
     )
+
+
+conn.commit()
+
+cursor.execute("SELECT result, COUNT(*) FROM battles GROUP BY result")
+print(cursor.fetchall())
+
+conn.close()

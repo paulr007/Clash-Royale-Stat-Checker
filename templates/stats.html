@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Clash Royale Stats</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Supermercado+One&family=Open+Sans:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: #0f0f1a;
+            color: white;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-family: 'Supermercado One', cursive;
+            color: #f4a800;
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px #f4a80088;
+            margin-bottom: 30px;
+        }
+
+        .stats-box {
+            background: linear-gradient(135deg, #1e1e3a, #2a2a4a);
+            border: 2px solid #f4a800;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px #f4a80044;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .wins {
+            color: #4cff72;
+        }
+
+        .losses {
+            color: #ff4c4c;
+        }
+
+        .winrate {
+            color: #f4a800;
+        }
+
+        h2 {
+            color: #f4a800;
+            font-family: 'Supermercado One', cursive;
+            margin-bottom: 15px;
+        }
+
+        .deck {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            background: linear-gradient(135deg, #1e1e3a, #2a2a4a);
+            border: 2px solid #f4a800;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 0 20px #f4a80044;
+            margin-bottom: 30px;
+        }
+
+        .deck img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .deck img:hover {
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #f4a800, #e09000);
+            color: #0f0f1a;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>⚔️ Battle Stats</h1>
+
+    <div class="stats-box">
+        <div class="stat">
+            <div class="stat-value wins">{{ wins }}</div>
+            <div class="stat-label">Wins</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value losses">{{ losses }}</div>
+            <div class="stat-label">Losses</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value winrate">{{ winrate }}%</div>
+            <div class="stat-label">Winrate</div>
+        </div>
+    </div>
+
+    <h2>🃏 Aktuelles Deck</h2>
+    <div class="deck">
+        {% for card in deck %}
+        <img src="{{ card.image }}" alt="{{ card.name }}" title="{{ card.name }}">
+        {% endfor %}
+    </div>
+
+    <a href="/" class="back-btn">← Zurück</a>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Clash Royale Stats</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Supermercado+One&family=Open+Sans:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: #0f0f1a;
+            color: white;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Supermercado One', cursive;
+            color: #f4a800;
+            font-size: 3em;
+            text-shadow: 0 0 20px #f4a80088;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            background: linear-gradient(135deg, #1e1e3a, #2a2a4a);
+            border: 2px solid #f4a800;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 20px #f4a80044;
+        }
+
+        input {
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid #f4a800;
+            background: #0f0f1a;
+            color: white;
+            margin-right: 10px;
+            width: 220px;
+        }
+
+        input::placeholder {
+            color: #555;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #f4a800, #e09000);
+            color: #0f0f1a;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>⚔️ Clash Royale Stats</h1>
+    <p>Gib deinen Spieler-Tag ein um deine Stats zu sehen</p>
+
+    <div class="search-box">
+        <form action="/stats" method="get">
+            <input type="text" name="tag" placeholder="#DEINTAG">
+            <button type="submit">Stats abrufen</button>
+        </form>
+    </div>
+</body>
+
+</html>

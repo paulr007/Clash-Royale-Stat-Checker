@@ -97,7 +97,5 @@ with open("cardWinRelation.json", "w") as f:
 
 conn.commit()
 
-cursor.execute("SELECT result, COUNT(*) FROM battles GROUP BY result")
-print(cursor.fetchall())
-
+print(battles[0]["team"][0]["cards"][0]["iconUrls"]["medium"])
 conn.close()

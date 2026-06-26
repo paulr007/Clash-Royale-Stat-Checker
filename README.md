@@ -8,3 +8,5 @@ Zeigt Winrate der eigenen Karten und gegen welche Gegner-Karten man häufig verl
 3. python main.py ausführen
 
 ## Alternativ
+Web App mit Flask erstellen, Schritt 1 wie oben, PLAYER_TAG nur merken.
+Dann aber python app.py ausführen

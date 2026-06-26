@@ -96,6 +96,4 @@ with open("cardWinRelation.json", "w") as f:
 
 
 conn.commit()
-
-print(battles[0]["team"][0]["cards"][0]["iconUrls"]["medium"])
 conn.close()

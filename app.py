@@ -22,8 +22,6 @@ def stats():
         f"https://api.clashroyale.com/v1/players/{tag}/battlelog",
         headers=headers,
     )
-    print(response.status_code)
-    print(response.text)
 
     battles = response.json()
 
